@@ -1,0 +1,26 @@
+{
+  "name": "customer-contacts",
+  "version": "1.0.0",
+  "description": "\"client-contacts details\"",
+  "main": "handler.js",
+  "scripts": {
+    "test": "\"check our client contacts information\" ",
+    "lint:fix": "eslint --fix  **/*.js",
+    "format": "npx prettier --write ."
+  },
+  "keywords": [
+    "\"client-contacts information\""
+  ],
+  "author": "\"Nagaraj R\"",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.41.0",
+    "prettierrc": "^0.0.0-5",
+    "serverless-offline": "^12.0.4"
+  },
+  "dependencies": {
+    "@hubspot/api-client": "^8.9.0",
+    "lodash": "^4.17.21",
+    "lodash.omit": "^4.5.0"
+  }
+}

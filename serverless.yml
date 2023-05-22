@@ -1,0 +1,75 @@
+service: customer-contacts
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  timeout: 30
+  version: '3'
+
+functions:
+  getContactList:
+    handler: src/handler.getContactList
+    events:
+      - http:
+          path: /
+          method: GET
+  updateContact:
+    handler: src/handler.updateContact
+    events:
+      - http:
+          path: /{id}
+          method: PATCH
+          request:
+            parameters:
+              paths:
+                id: true
+  createContact:
+    handler: src/handler.createContact
+    events:
+      - http:
+          path: /
+          method: POST
+  deleteContact:
+    handler: src/handler.deleteContact
+    events:
+      - http:
+          path: /{id}
+          method: DELETE
+          request:
+            parameters:
+              paths:
+                id: true
+  deleteBatchContact:
+    handler: src/handler.deleteBatchContact
+    events:
+      - http:
+          path: /batch/delete
+          method: POST
+  updateBatchContact:
+    handler: src/handler.updateBatchContactHandler
+    events:
+      - http:
+          path: /batch/update
+          method: POST
+  createBatchContact:
+    handler: src/handler.createBatchContactHandler
+    events:
+      - http:
+          path: /batch/create
+          method: POST
+  readBatchContact:
+    handler: src/handler.readBatchContactHandler
+    events:
+      - http:
+          path: /batch/read
+          method: POST
+  searchContact:
+    handler: src/handler.searchContactHandler
+    events:
+      - http:
+          path: /contacts/search
+          method: GET
+
+plugins:
+  - serverless-offline
